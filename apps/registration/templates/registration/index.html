@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login | Registration</title>
+</head>
+<body>
+    <h2>Welcome!</h2>
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    <h4>Existing User?  Log In Here:</h4>
+    <form action="{% url 'loginreg:login' %}" method="post">
+        {% csrf_token %}
+        <p><label for="login-email">Email:</label>
+        <input id="login-email" type="email" name="email" /><p>
+        <p><label for="login-pw">Password:</label>
+        <input id="login-pw" type="password" name="password" /></p>
+        <input type="submit" value="Log In" />
+    </form>
+    <h4>New User?  Register Here:</h4>
+    <form action="{% url 'loginreg:create-user' %}" method="post">
+        {% csrf_token %}
+        <p><label for="reg-fName">First Name:</label>
+        <input id="reg-fName" type="text" name="first_name" /></p>
+        <p><label for="reg-fName">Last Name:</label>
+        <input id="reg-lName" type="text" name="last_name" /></p>
+        <p><label for="reg-email">Email:</label>
+        <input id="reg-email" type="email" name="email" /></p>
+        <p><label for="reg-pw">Password:</label>
+        <input id="reg-pw" type="password" name="password" /></p>
+        <p><label for="reg-cpw">Confirm Password:</label>
+        <input id="reg-cpw" type="password" name="conf_password" /></p>
+        <input type="submit" value="Register" />
+    </form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Email List</title>
+</head>
+<body>
+    {% if 'alert' in request.session %}
+        {{ request.session.alert }}
+    {% endif %}
+    <table>
+        <tr>
+            <th>Email Address</th>
+            <th>Date Added</th>
+        </tr>
+        {% for email in emails %}
+        <tr>
+            <td>{{ email.email }}</td>
+            <td>{{ email.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
